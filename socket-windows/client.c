@@ -20,12 +20,24 @@ int main(int argc,char *argv[] ) {
 	if (connect(hsocket, (SOCKADDR*)&servAddr, sizeof servAddr) == SOCKET_ERROR) {
 		logerror("connect to server");
 	}
-	char message[1001];
-	int strlen;
-	strlen = recv(hsocket, message, sizeof(message) - 1, 0);
-	if (strlen == -1)logerror("recv");
-
-	printf("receive message from server %s", message);
+	char message[BUFSIZ];
+	while (1) {
+		int len = 0, sz = 0, tmp = 0;
+		puts("传达你的请求\n");
+		fgets(message, sizeof message-1, stdin);
+		if (strcmp(message, "bye\n") == 0)break;
+		sz = send(hsocket, message,BUFSIZ, 0);
+		sz /= BUFSIZ;
+		Sleep(1);
+		printf("发送数据%d\n", sz);
+		while (len < sz) {
+			tmp = recv(hsocket, &message[len*BUFSIZ],BUFSIZ, 0);
+			if (tmp == -1)logerror("recv");
+			len += tmp;
+		}
+		message[BUFSIZ] = '\0';
+		printf("回应: %s\n", message);
+	}
 
 	closesocket(hsocket);
 	WSACleanup();
