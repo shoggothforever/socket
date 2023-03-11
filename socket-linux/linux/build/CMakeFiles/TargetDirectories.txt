@@ -1,0 +1,2 @@
+/home/ds/桌面/netprogramming/build/bin/CMakeFiles/echocli.dir
+/home/ds/桌面/netprogramming/build/bin/CMakeFiles/echoser.dir
