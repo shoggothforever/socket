@@ -1,5 +1,6 @@
 # socket
-该项目有两部分，分别对应windows和linux两种操作系统，不过目前主要部分还是在linux下
+该项目有两部分，分别对应windows和linux两种操作系统，不过项目的目前主要部分还是在linux
+
 linux下的socket编程以最简单的echo程序作为起点，逐步完善各种功能（多路复用，线程编程，信号量监测，select，poll，epoll机制）
 ### 涉及知识点：
 0. 基本的linux操作系统知识，vim使用方法，一点点计网知识（套接字编程）
